@@ -19,13 +19,19 @@
   let country: string;
 </script>
 
-<div>
-  <h1>Covid 19 Tracker</h1>
+<div class="border-solid border-2 p-20 mt-20 shadow-lg">
+  <h1 class="text-4xl">Covid 19 Tracker</h1>
 
-  <button on:click={() => console.log(dataPoint)}>test</button>
-  {#each dataPoint as data}
-    Cases: {data.Cases}
-    {data.Country}
-    {moment(data.Date).format("MMMM Do YYYY, h:mm:ss a")}
-  {/each}
+  <!-- <button on:click={() => console.log(dataPoint)}>test</button> -->
+  <div class="mt-5">
+    {#each dataPoint as data}
+      <p class="text-xl">Cases: <b>{data.Cases}</b></p>
+      <p class="text-xl pt-2">Country: <b>{data.Country}</b></p>
+      <p class="text-xl pt-2">
+        Latest update: <b
+          >{moment(data.Date).format("MMMM Do YYYY, h:mm:ss a")}</b
+        >
+      </p>
+    {/each}
+  </div>
 </div>
