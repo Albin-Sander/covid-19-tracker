@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  h1 {
+    @apply dark:text-slate-50;
+  }
+  h2,
+  h3,
+  h4 {
+    @apply font-bold;
+  }
+
+  body {
+    @apply dark:bg-gray-900;
+  }
+
+  p {
+    @apply dark:text-slate-50;
+  }
+}
