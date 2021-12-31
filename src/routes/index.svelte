@@ -1,14 +1,17 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import moment from "moment";
-  import Layout from "./__layout.svelte";
 
   onMount(() => {
     fetchData();
   });
   const fetchData = async () => {
-    const url =
-      "https://api.covid19api.com/country/sweden/status/confirmed?from=2021-12-29T00:00:00Z&to=2021-12-30T00:00:00Z";
+    const today = moment().startOf("day").format("YYYY-MM-DD");
+    const yesterday = moment()
+      .subtract(1, "day")
+      .startOf("day")
+      .format("YYYY-MM-DD");
+    const url = `https://api.covid19api.com/country/sweden/status/confirmed?from=${yesterday}T00:00:00Z&to=${today}T00:00:00Z`;
     const res = await fetch(url);
     const data = await res.json();
 
@@ -17,7 +20,6 @@
   };
 
   let dataPoint = [];
-  let country: string;
 </script>
 
 <div
@@ -35,7 +37,6 @@
       on:click={fetchData}
     />
   </div>
-  <!-- <button on:click={() => console.log(dataPoint)}>test</button> -->
   <div class="mt-5">
     {#each dataPoint as data}
       <p class="text-xl">Cases: <b>{data.Cases}</b></p>
