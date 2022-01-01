@@ -40,7 +40,7 @@
     </div>
     <div class="mt-5">
       {#each dataPoint as data}
-        <p class="text-xl">Cases: <b>{data.Cases}</b></p>
+        <p class="text-xl">Confirmed Cases: <b>{data.Cases}</b></p>
         <p class="text-xl pt-2">Country: <b>{data.Country}</b></p>
         <p class="text-xl pt-2">
           Latest update: <b
