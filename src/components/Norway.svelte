@@ -16,9 +16,19 @@
     const data = await res.json();
 
     dataPoint = data;
+
+    for (var i = 0; i < 1; i++) {
+      console.log(dataPoint[i]);
+      country = dataPoint[i].Country;
+      confirmedCases = dataPoint[i].Cases;
+      latestUpdate = dataPoint[i].Date;
+    }
   };
 
   let dataPoint = [];
+  let country = "";
+  let confirmedCases: number;
+  let latestUpdate: string;
 </script>
 
 <div
@@ -32,14 +42,20 @@
       on:click={fetchData}
     />
   </div>
-  <div class="mt-5">
-    {#each dataPoint as data}
-      <h1 class="text-4xl pt-2">Country: <b>{data.Country}</b></h1>
-      <p class="text-xl">Cases: <b>{data.Cases}</b></p>
 
-      <p class="text-xl pt-2">
+  <div class="mt-5">
+    <h1 class="text-4xl pt-2">Country: <b>{country}</b></h1>
+    <p class="text-xl mt-5">Confirmed Cases: <b>{confirmedCases}</b></p>
+    <p class="text-xl pt-2">
+      Latest update: <b>{moment(latestUpdate).format("MMMM Do YYYY, h:mm a")}</b
+      >
+    </p>
+    <!-- {#each dataPoint as data} -->
+    <!-- <p class="text-xl">Confirmed Cases: <b>{data.Cases}</b></p> -->
+
+    <!-- <p class="text-xl pt-2">
         Latest update: <b>{moment(data.Date).format("MMMM Do YYYY, h:mm a")}</b>
       </p>
-    {/each}
+    {/each} -->
   </div>
 </div>
